@@ -1,4 +1,4 @@
-export const englishData = [
+export const quizdata = [
     {
       question: "I'm very happy _____ in India. I really miss being there.",
       Options: ['to live', 'to have lived', 'to be lived', 'to be living'],

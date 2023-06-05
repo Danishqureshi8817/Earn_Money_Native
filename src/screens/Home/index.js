@@ -1,6 +1,6 @@
-import { View, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity } from 'react-native'
+import { View, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity,Modal } from 'react-native'
 import React from 'react'
-import { useLayoutEffect } from "react";
+import { useLayoutEffect,useState } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
@@ -9,12 +9,13 @@ import { sliderData } from '../../components/slider/data'
 import BannerSlider from '../../components/slider/BannerSlider'
 import { windowHeight, windowWidth } from '../../utiles/Dimensions'
 import styles from './style'
+import IconEntypo from 'react-native-vector-icons/Entypo';
 
 
 
 const Home = () => {
 
-
+  const [modalVisible, setModalVisible] = useState(false);
 
   const navigation = useNavigation();
 
@@ -53,6 +54,16 @@ const Home = () => {
 
     });
   }, []);
+
+
+  // const DailyReward = () => {
+      
+  //   return (
+    
+  //   )
+  // }
+
+
 
   return (
 
@@ -145,11 +156,111 @@ const Home = () => {
                     <Image style={styles.gameZoneSingleImg} source={require('../../assets/q3.png')} />
                     <Text style={styles.gameZoneImgText}>GK Quiz</Text>
                   </View>
-                  <View style={styles.gameZoneSingleImgView}>
+
+                 <TouchableOpacity onPress={ ()=>{setModalVisible(true)} }>
+                 <View style={styles.gameZoneSingleImgView}>
                     <Image style={styles.gameZoneSingleImg} source={require('../../assets/q4.png')} />
-                    <Text style={styles.gameZoneImgText}>Quiz</Text>
+                    <Text style={styles.gameZoneImgText}>Daily Reward</Text>
                   </View>
 
+                  <Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisible}
+      onRequestClose={() => {
+        setModalVisible(!modalVisible);
+      }}>
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'rgba(0,0,0,.5)',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <View
+          style={{
+            backgroundColor: '#1f4c86',
+            width: '90%',
+             alignItems:'center',
+            borderRadius: 10,
+          }}>
+          
+          <TouchableOpacity onPress={()=>{ setModalVisible(!modalVisible)}} style={{position:'absolute',right:15,top:13}}>
+          <IconEntypo name="cross" size={responsiveWidth(6)} color="#fff"  />
+          </TouchableOpacity>
+
+
+          <Text
+            style={{
+              fontSize: 30,
+              letterSpacing:1.5,
+              fontWeight: '600',
+             
+              marginTop: 30,
+              color:'#fff'
+            }}>
+            Congrats
+          </Text>
+          <Text 
+            style={{
+              fontSize: 16,
+              marginTop: 5,
+              color: '#fff',
+
+            }}>
+           Come back everyday to earn{'\n'}
+           {'        '}Extra reward coins!
+          </Text>
+          <Image style={{width:200,height:120,marginTop:25}} source={require('../../assets/dailygift.png')} />
+
+          <Text 
+            style={{
+              fontSize: 16,
+              marginTop: 15,
+              color: '#fff',
+              
+            }}>
+          YOUR REWARD TODAY IS
+          </Text>
+         <View style={{flexDirection:'row'}} >
+         <Image style={{width:30,height:30,marginTop:2,marginRight:4}} source={require('../../assets/coin.png')} />
+          <Text 
+            style={{
+              fontSize: 16,
+              marginTop: 5,
+              color: '#fff',
+              
+            }}>
+           {34} Coins
+          </Text>
+         </View>
+          <TouchableOpacity
+            style={{
+         
+              height: 40,
+              padding: 10,
+            
+              borderRadius: 10,
+              marginTop: 20,
+              marginBottom: 20,
+              backgroundColor:'#0a203e',
+              color:'#fff',
+              elevation:5
+            }}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+          
+            
+            }}>
+            <Text style={{ color:'#fff',paddingHorizontal:10,letterSpacing:0.8}}>Claim Reward</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </Modal>
+
+                 </TouchableOpacity>
+               
+              {/* Model */}
 
                 </View>
 
@@ -161,6 +272,9 @@ const Home = () => {
             </View>
 
           </View>
+
+
+
           {/* Game Zone-End*/}
 
           {/* Contest Zone-Start*/}

@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 
 import Navigation from './src/Navigation/index'
-import Spiner from './src/screens/SpinerWheel/index'
+import Quiz from './src/screens/Quiz/index'
 
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
     // </NavigationContainer>
      
    <Navigation/>
-    // <Spiner/>
+    // <Quiz/>
    
   )
 }
