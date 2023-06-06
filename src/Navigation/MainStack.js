@@ -7,6 +7,7 @@ import Referral from '../screens/Referral/index';
 import Home from '../screens/Home/index';
 import Spiner from '../screens/SpinerWheel/index'
 import Quiz from '../screens/Quiz/index';
+import DownloadTask from '../screens/DownloadTask/index'
 
 const HomeStack = createNativeStackNavigator();
 const MainStack = () => {
@@ -20,6 +21,7 @@ const MainStack = () => {
       <HomeStack.Screen name='Referral' component={Referral} options={{headerShown:true}} />
       <HomeStack.Screen name='SpinerWheel' component={Spiner} options={{headerShown:true}} />
       <HomeStack.Screen name='Quiz' component={Quiz} options={{headerShown:true}} />
+      <HomeStack.Screen name='DownloadTask' component={DownloadTask} options={{headerShown:true}} />
       
     </HomeStack.Navigator>
   )

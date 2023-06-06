@@ -23,6 +23,7 @@ const CustomDrawer = () => {
     { icon: 'game-controller', title: 'Quiz' },
     { icon: 'information-circle', title: 'About' },
     { icon: 'information-circle', title: 'SpinerWheel' },
+    { icon: 'information-circle', title: 'DownloadTask' },
 
   ];
 
