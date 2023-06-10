@@ -5,7 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Profile from '../screens/Profile/index';
 import CustomDrawer from '../components/customDrawer/DrawerCustom'
 import EditProfile from '../screens/EditProfile/index'
-
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 
 const Drawer = createDrawerNavigator();
 const DrawerStack = () => {

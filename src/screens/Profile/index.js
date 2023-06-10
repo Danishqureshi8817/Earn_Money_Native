@@ -12,6 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconFeather from 'react-native-vector-icons/Feather';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import styles from './style'
 
 
 
@@ -38,7 +39,7 @@ const Profile = (props) => {
         (
            
           <View style={{ flexDirection: 'row' }}>
-            {/* <Ionicons name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} /> */}
+            <Ionicons onPress={()=>{navigation.navigate('Wallet')}} name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} />
             <TouchableOpacity onPress={()=>{navigation.navigate('EditProfile')}}>
             <IconFeather  name="edit" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(7) }} />
             </TouchableOpacity>
@@ -56,17 +57,17 @@ const Profile = (props) => {
     <SafeAreaView style={styles.container}>
 
       <View style={styles.userInfoSection}>
-        <View style={{flexDirection: 'row', marginTop: 15}}>
+        <View style={{flexDirection: 'row', marginTop: responsiveWidth(3.5)}}>
           <Avatar.Image 
             source={{
               uri: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
             }}
-            size={80}
+            size={responsiveWidth(19.5)}
           />
-          <View style={{marginLeft: 20}}>
+          <View style={{marginLeft: responsiveWidth(4.85)}}>
             <Title style={[styles.title, {
-              marginTop:15,
-              marginBottom: 5,
+              marginTop:responsiveWidth(3.65),
+              marginBottom: responsiveWidth(1.2),
             }]}>Danish Qureshi</Title>
             <Caption style={styles.caption}>danishqureshi8817@</Caption>
           </View>
@@ -75,23 +76,23 @@ const Profile = (props) => {
 
       <View style={styles.userInfoSection}>
         <View style={styles.row}>
-          <Icon name="map-marker-radius" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>Gwalior, India</Text>
+          <Icon name="map-marker-radius" color="#777777" size={responsiveWidth(5)}/>
+          <Text style={{color:"#777777", marginLeft: responsiveWidth(5)}}>Gwalior, India</Text>
         </View>
         <View style={styles.row}>
-          <Icon name="phone" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>+91-8817456962</Text>
+          <Icon name="phone" color="#777777" size={responsiveWidth(5)}/>
+          <Text style={{color:"#777777", marginLeft:responsiveWidth(5) }}>+91-8817456962</Text>
         </View>
         <View style={styles.row}>
-          <Icon name="email" color="#777777" size={20}/>
-          <Text style={{color:"#777777", marginLeft: 20}}>danishqureshi8817@gmail.com</Text>
+          <Icon name="email" color="#777777" size={responsiveWidth(5)}/>
+          <Text style={{color:"#777777", marginLeft: responsiveWidth(5)}}>danishqureshi8817@gmail.com</Text>
         </View>
       </View>
 
       <View style={styles.infoBoxWrapper}>
           <View style={[styles.infoBox, {
             borderRightColor: '#dddddd',
-            borderRightWidth: 1
+            borderRightWidth:responsiveWidth(0.2)
           }]}>
             <Title>₹140.50</Title>
             <Caption>Wallet</Caption>
@@ -104,22 +105,22 @@ const Profile = (props) => {
 
       <View style={styles.menuWrapper}>
       
-        <TouchableRipple onPress={() => {}}>
+        <TouchableRipple onPress={() => {navigation.navigate('Wallet')}}>
           <View style={styles.menuItem}>
-            <Icon name="credit-card" color="#1f4c86" size={25}/>
-            <Text style={styles.menuItemText}>Payment</Text>
+            <Icon name="credit-card" color="#1f4c86" size={responsiveWidth(6.1)}/>
+            <Text style={styles.menuItemText}>Wallet</Text>
           </View>
         </TouchableRipple>
        
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <Icon name="account-check-outline" color="#1f4c86" size={25}/>
+            <Icon name="account-check-outline" color="#1f4c86" size={responsiveWidth(6.1)}/>
             <Text style={styles.menuItemText}>Support</Text>
           </View>
         </TouchableRipple>
         <TouchableRipple onPress={() => {}}>
           <View style={styles.menuItem}>
-            <IconFeather name="settings" color="#1f4c86" size={25}/>
+            <IconFeather name="settings" color="#1f4c86" size={responsiveWidth(6.1)}/>
             <Text style={styles.menuItemText}>Settings</Text>
           </View>
         </TouchableRipple>
@@ -130,54 +131,3 @@ const Profile = (props) => {
 
 export default Profile;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop:10
-  },
-  userInfoSection: {
-    paddingHorizontal: 30,
-    marginBottom: 25,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  caption: {
-    fontSize: 14,
-    lineHeight: 14,
-    fontWeight: '500',
-  },
-  row: {
-    flexDirection: 'row',
-    marginBottom: 10,
-  },
-  infoBoxWrapper: {
-    borderBottomColor: '#dddddd',
-    borderBottomWidth: 1,
-    borderTopColor: '#dddddd',
-    borderTopWidth: 1,
-    flexDirection: 'row',
-    height: 100,
-  },
-  infoBox: {
-    width: '50%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  menuWrapper: {
-    marginTop: 10,
-  },
-  menuItem: {
-    flexDirection: 'row',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-  },
-  menuItemText: {
-    color: '#777777',
-    marginLeft: 20,
-    fontWeight: '600',
-    fontSize: 16,
-    lineHeight: 26,
-  },
-});

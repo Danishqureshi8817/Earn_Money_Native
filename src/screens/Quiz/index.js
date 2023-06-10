@@ -6,6 +6,7 @@ import Questions from './Questions'
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
+import LinearGradient from 'react-native-linear-gradient'
 
 const Quiz = () => {
     // alert(JSON.stringify(quizdata[1].question))
@@ -83,7 +84,7 @@ const Quiz = () => {
           (
              
             <View style={{ flexDirection: 'row' }}>
-              <Icon  name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} />
+              <Icon  onPress={()=>{navigation.navigate('Wallet')}} name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} />
               <TouchableOpacity onPress={()=>{navigation.navigate('Profile')}}>
               <Icon  name="person" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(3) }} />
               </TouchableOpacity>
@@ -251,13 +252,20 @@ const Quiz = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <View
+           <LinearGradient colors={["#0a203e", "#1f4c86"]}
+                  useAngle={true}
+                  angle={322}
+                  angleCenter={{ x: 0.5, y: 0.5 }}
+                  style={{ borderRadius: 10, elevation: 5, borderWidth: 1,width: '90%',
+            
+                  borderColor:  '#1f4c86', }}>
+          {/* <View
             style={{
               backgroundColor: '#1f4c86',
               width: '90%',
               
               borderRadius: 10,
-            }}>
+            }}> */}
             <Text
               style={{
                 fontSize: 30,
@@ -299,7 +307,8 @@ const Quiz = () => {
               }}>
               <Text style={{ color:'#fff',paddingHorizontal:10,letterSpacing:0.8}}>Close</Text>
             </TouchableOpacity>
-          </View>
+          {/* </View> */}
+          </LinearGradient>
         </View>
       </Modal>
 

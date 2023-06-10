@@ -6,7 +6,7 @@ export default styles = StyleSheet.create({
     slider: {
         flex: 0.20,
         marginTop: responsiveWidth(5),
-       
+      
         alignItems: 'center',
     },
     getFreeMainText: {
@@ -42,7 +42,7 @@ export default styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         zIndex:0.1,
-        bottom:15
+        bottom:responsiveWidth(3.5)
     },
     spineImg: {
         width: responsiveWidth(85),

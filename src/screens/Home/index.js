@@ -1,16 +1,16 @@
-import { View, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity,Modal } from 'react-native'
+import { View, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity,Modal,TouchableHighlight } from 'react-native'
 import React from 'react'
-import { useLayoutEffect,useState } from "react";
+import { useLayoutEffect,useState,useRef } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
-import Carousel from 'react-native-snap-carousel';
+import Carousel,{ Pagination } from 'react-native-snap-carousel';
 import { sliderData } from '../../components/slider/data'
 import BannerSlider from '../../components/slider/BannerSlider'
 import { windowHeight, windowWidth } from '../../utiles/Dimensions'
 import styles from './style'
 import IconEntypo from 'react-native-vector-icons/Entypo';
-
+import LinearGradient from 'react-native-linear-gradient'
 
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
 
 
 
-
+//  Header start
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -44,7 +44,7 @@ const Home = () => {
         (
            
           <View style={{ flexDirection: 'row' }}>
-            <Icon onPress={()=>{navigation.navigate('SpinerWheel')}} name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} />
+            <Icon onPress={()=>{navigation.navigate('Wallet')}} name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} />
             <TouchableOpacity onPress={()=>{navigation.navigate('Profile')}}>
             <Icon  name="person" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(3) }} />
             </TouchableOpacity>
@@ -55,6 +55,7 @@ const Home = () => {
     });
   }, []);
 
+//  Header End
 
   // const DailyReward = () => {
       
@@ -63,7 +64,8 @@ const Home = () => {
   //   )
   // }
 
-
+// const [index, setIndex] = useState(0);
+// const isCarousel = useRef(null);
 
   return (
 
@@ -74,14 +76,33 @@ const Home = () => {
           {/* Slider */}
           <View style={[styles.slider]}>
             <Carousel
+              // ref={isCarousel}
 
-             
+              autoplay={true}
               data={sliderData}
               renderItem={renderBanner}
-              sliderWidth={windowWidth - responsiveWidth(6)}
-              itemWidth={responsiveWidth(76)}
+              sliderWidth={windowWidth}  
+              // - responsiveWidth(6)
+              itemWidth={responsiveWidth(85)}
               loop={true}
+              // onSnapToItem={index => setIndex(index)}
             />
+            {/* <Pagination
+              dotsLenght={sliderData.lenght}
+              activeDotIndex={index}
+              carouselRef={isCarousel}
+              dotStyle={{
+                width:10,
+                height:10,
+                borderRadius:10,
+                marginHorizontal:8,
+                backgroundColor:'#fff',
+                zIndex:1
+              }}
+              inactiveDotOpacity={0.4}
+           
+            />
+             */}
           </View>
           {/* Slider-End */}
 
@@ -119,9 +140,9 @@ const Home = () => {
 
            
             <View style={{ alignItems: 'center', marginTop: responsiveWidth(2.5) }}>
-            <Pressable onPress={()=>{navigation.navigate('SpinerWheel')}}  style={{backgroundColor:'#1f4c86',zIndex:0.5,top:160,left:80,paddingHorizontal:5,borderRadius:5}} >
+            <TouchableHighlight onPress={()=>{navigation.navigate('SpinerWheel')}}  style={{backgroundColor:'#1f4c86',zIndex:0.5,top:responsiveWidth(39),left:responsiveWidth(19),paddingHorizontal:responsiveWidth(2),borderRadius:responsiveWidth(2.5)}} >
                    <Text  style={{color:'#fff',fontWeight:400}}>Spin Now</Text>
-                </Pressable>
+                </TouchableHighlight>
               <View style={styles.spineImgView}>
                 
                 <Image style={styles.spineImg} source={require('../../assets/spinerposter.jpg')} />
@@ -162,8 +183,24 @@ const Home = () => {
                     <Image style={styles.gameZoneSingleImg} source={require('../../assets/q4.png')} />
                     <Text style={styles.gameZoneImgText}>Daily Reward</Text>
                   </View>
+                 </TouchableOpacity>
 
-                  <Modal
+    
+              
+
+                </View>
+
+
+
+
+
+              </View>
+            </View>
+
+          </View>
+
+ {/* Model-Start Daily Rewards  */}
+ <Modal
       animationType="slide"
       transparent={true}
       visible={modalVisible}
@@ -177,57 +214,64 @@ const Home = () => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <View
+         <LinearGradient colors={["#0a203e", "#1f4c86"]}
+                  useAngle={true}
+                  angle={322}
+                  angleCenter={{ x: 0.5, y: 0.5 }}
+                  style={{ borderRadius: responsiveWidth(2.5), elevation: responsiveWidth(2.5), borderWidth: responsiveWidth(0.2),width: '90%',height:responsiveHeight(50),
+                  alignItems:'center',
+                  borderColor:  '#1f4c86', }}>
+        {/* <View
           style={{
             backgroundColor: '#1f4c86',
             width: '90%',
              alignItems:'center',
             borderRadius: 10,
-          }}>
+          }}> */}
           
-          <TouchableOpacity onPress={()=>{ setModalVisible(!modalVisible)}} style={{position:'absolute',right:15,top:13}}>
+          <TouchableOpacity onPress={()=>{ setModalVisible(!modalVisible)}} style={{position:'absolute',right:responsiveWidth(3.5),top:responsiveWidth(3)}}>
           <IconEntypo name="cross" size={responsiveWidth(6)} color="#fff"  />
           </TouchableOpacity>
 
 
           <Text
             style={{
-              fontSize: 30,
-              letterSpacing:1.5,
+              fontSize: responsiveFontSize(3.55),
+              letterSpacing:responsiveWidth(0.35),
               fontWeight: '600',
              
-              marginTop: 30,
+              marginTop: responsiveWidth(7),
               color:'#fff'
             }}>
             Congrats
           </Text>
           <Text 
             style={{
-              fontSize: 16,
-              marginTop: 5,
+              fontSize: responsiveWidth(3.8),
+              marginTop: responsiveWidth(1.2),
               color: '#fff',
 
             }}>
            Come back everyday to earn{'\n'}
            {'        '}Extra reward coins!
           </Text>
-          <Image style={{width:200,height:120,marginTop:25}} source={require('../../assets/dailygift.png')} />
+          <Image style={{width:responsiveWidth(44),height:responsiveHeight(14.2),marginTop:responsiveWidth(4)}} source={require('../../assets/dailygift.png')} />
 
           <Text 
             style={{
-              fontSize: 16,
-              marginTop: 15,
+              fontSize: responsiveWidth(3.8),
+              marginTop: responsiveWidth(3.6),
               color: '#fff',
               
             }}>
           YOUR REWARD TODAY IS
           </Text>
          <View style={{flexDirection:'row'}} >
-         <Image style={{width:30,height:30,marginTop:2,marginRight:4}} source={require('../../assets/coin.png')} />
+         <Image style={{width:responsiveWidth(7.15),height:responsiveHeight(3.65),marginTop:responsiveWidth(0.5),marginRight:responsiveWidth(1)}} source={require('../../assets/coin.png')} />
           <Text 
             style={{
-              fontSize: 16,
-              marginTop: 5,
+              fontSize: responsiveFontSize(1.9),
+              marginTop: responsiveFontSize(0.7),
               color: '#fff',
               
             }}>
@@ -237,43 +281,28 @@ const Home = () => {
           <TouchableOpacity
             style={{
          
-              height: 40,
-              padding: 10,
+              height: responsiveHeight(4.8),
+              padding: responsiveWidth(2.5),
             
-              borderRadius: 10,
-              marginTop: 20,
-              marginBottom: 20,
+              borderRadius: responsiveWidth(2.5),
+              marginTop: responsiveWidth(5),
+              marginBottom: responsiveWidth(5),
               backgroundColor:'#0a203e',
               color:'#fff',
-              elevation:5
+              elevation:responsiveWidth(1.2)
             }}
             onPress={() => {
               setModalVisible(!modalVisible);
           
             
             }}>
-            <Text style={{ color:'#fff',paddingHorizontal:10,letterSpacing:0.8}}>Claim Reward</Text>
+            <Text style={{ color:'#fff',paddingHorizontal:responsiveWidth(2.4),letterSpacing:responsiveFontSize(0.095)}}>Claim Reward</Text>
           </TouchableOpacity>
-        </View>
+        {/* </View> */}
+        </LinearGradient>
       </View>
-    </Modal>
-
-                 </TouchableOpacity>
-               
-              {/* Model */}
-
-                </View>
-
-
-
-
-
-              </View>
-            </View>
-
-          </View>
-
-
+    </Modal> 
+{/* Model-End Daily Rewards */}
 
           {/* Game Zone-End*/}
 

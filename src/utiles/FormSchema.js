@@ -2,7 +2,8 @@ import * as yup from 'yup';
 
 
 export const FormSchema = yup.object({
-    name:yup.string().min(3,'To Short').max(20,'To Long').required('Name is must'),
+    firstname:yup.string().min(3,'To Short').max(20,'To Long').required('Fisrt name is must'),
+    lastname:yup.string().min(3,'To Short').max(20,'To Long').required('Fisrt name is must'),
     email: yup.string().email('Invalid Email').required('Email is must'),
     age:yup.number().min(10).max(50).required('Age is must'),
     password:yup.string()

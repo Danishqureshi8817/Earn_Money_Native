@@ -22,7 +22,6 @@ const CustomDrawer = () => {
     { icon: 'share-social', title: 'Referral' },
     { icon: 'game-controller', title: 'Quiz' },
     { icon: 'information-circle', title: 'About' },
-    { icon: 'information-circle', title: 'SpinerWheel' },
     { icon: 'information-circle', title: 'DownloadTask' },
 
   ];
@@ -59,7 +58,7 @@ const CustomDrawer = () => {
     const backgroundColor = item.title === selectedId ? '#215295' : 'white';
     const color = item.title === selectedId ? 'white' : 'black';
     const iconColor = item.title === selectedId ? 'white' : '#215295';
-    const elevation = item.title === selectedId ? 5 : 0;
+    const elevation = item.title === selectedId ? responsiveWidth(1.5) : 0;
 
     return (<Item
       onPress={() => {
