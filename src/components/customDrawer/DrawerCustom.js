@@ -21,8 +21,9 @@ const CustomDrawer = () => {
     { icon: 'wallet', title: 'Wallet' },
     { icon: 'share-social', title: 'Referral' },
     { icon: 'game-controller', title: 'Quiz' },
+    { icon: 'cloud-download', title: 'Offer' },
     { icon: 'information-circle', title: 'About' },
-    { icon: 'information-circle', title: 'DownloadTask' },
+   
 
   ];
 

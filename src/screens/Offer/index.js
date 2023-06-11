@@ -9,7 +9,7 @@ import { taskdata } from './taskdata';
 import LinearGradient from 'react-native-linear-gradient'
 import styles from './style'
 
-const DownloadTask = () => {
+const Offer = () => {
 
     const navigation = useNavigation();
 
@@ -94,4 +94,4 @@ const DownloadTask = () => {
   )
 }
 
-export default DownloadTask
+export default Offer;

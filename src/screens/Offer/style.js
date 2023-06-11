@@ -9,13 +9,15 @@ export default styles = StyleSheet.create({
     marginHorizontal:responsiveWidth(5)
   },
   linearGradient:{
-    flex:0.2,borderRadius:responsiveWidth(2.45),
+    flex:0.2,
+    borderRadius:responsiveWidth(2.45),
     height:responsiveHeight(11.85),
     elevation:responsiveWidth(1.5),
     marginVertical:responsiveWidth(2.45),
     borderWidth:responsiveWidth(0.2),
     borderColor:'#1f4c86',
-    justifyContent:'center'
+    justifyContent:'center',
+    width:responsiveWidth(90)
   },
   appImage:{
     width:responsiveWidth(14.6),
