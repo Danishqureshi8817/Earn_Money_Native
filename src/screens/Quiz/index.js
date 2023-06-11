@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 import LinearGradient from 'react-native-linear-gradient'
+import styles from './style'
 
 const Quiz = () => {
     // alert(JSON.stringify(quizdata[1].question))
@@ -104,22 +105,22 @@ const Quiz = () => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
-          marginTop: 20,
+          marginTop: responsiveWidth(5),
         }}>
         <Text
           style={{
-            fontSize: 20,
+            fontSize: responsiveFontSize(2.4),
             fontWeight: '600',
 
-            marginLeft: 20,
+            marginLeft: responsiveWidth(5),
             color: '#fff',
           }}>
           Questions :{' ' + currentIndex + '/' + quizdata.length}
         </Text>
         <Text
           style={{
-            marginRight: 20,
-            fontSize: 20,
+            marginRight: responsiveWidth(5),
+            fontSize: responsiveFontSize(2.4),
             fontWeight: '600',
             color: '#fff',
           }}
@@ -130,7 +131,7 @@ const Quiz = () => {
           Reset
         </Text>
       </View>
-        <View style={{marginTop: 30}}>
+        <View style={{marginTop: responsiveWidth(7.5)}}>
         <FlatList
        onScroll={e=>{
         const x = e.nativeEvent.contentOffset.x / windowWidth + 1;
@@ -155,14 +156,14 @@ const Quiz = () => {
         />
       </View>
 
-      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',position:'absolute',bottom:50,width:'100%'}}>
+      <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',position:'absolute',bottom:responsiveWidth(12),width:'100%'}}>
           
         <TouchableOpacity style={{
            backgroundColor: currentIndex > 1 ?'#1f4c86':'gray',
-           height:50,
-           width:100,
-           borderRadius:10,
-           marginLeft:20,
+           height:responsiveHeight(5.95),
+           width:responsiveWidth(24.5),
+           borderRadius:responsiveWidth(2.45),
+           marginLeft:responsiveWidth(5),
            justifyContent:'center',
            alignItems:'center'
         }}  
@@ -185,15 +186,8 @@ const Quiz = () => {
 
 
       {currentIndex==8 ? (
-        <TouchableOpacity style={{
-           backgroundColor:'green',
-           height:50,
-           width:100,
-           borderRadius:10,
-           marginRight:20,
-           justifyContent:'center',
-           alignItems:'center'
-        }}  onPress={ ()=>{
+        <TouchableOpacity style={styles.submitButton}  
+        onPress={ ()=>{
               setModalVisible(true)
         } } >
           
@@ -203,15 +197,8 @@ const Quiz = () => {
 
         </TouchableOpacity>
       ): (
-        <TouchableOpacity style={{
-           backgroundColor:'#1f4c86',
-           height:50,
-           width:100,
-           borderRadius:10,
-           marginRight:20,
-           justifyContent:'center',
-           alignItems:'center'
-        }}  onPress={ ()=>{
+        <TouchableOpacity style={styles.nextButton} 
+         onPress={ ()=>{
           if(questions[currentIndex-1].marked !== -1){
 
             if (currentIndex < questions.length) {
@@ -256,9 +243,7 @@ const Quiz = () => {
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, elevation: 5, borderWidth: 1,width: '90%',
-            
-                  borderColor:  '#1f4c86', }}>
+                  style={styles.modelLinerScore}>
           {/* <View
             style={{
               backgroundColor: '#1f4c86',
@@ -267,45 +252,21 @@ const Quiz = () => {
               borderRadius: 10,
             }}> */}
             <Text
-              style={{
-                fontSize: 30,
-                letterSpacing:1.5,
-                fontWeight: '800',
-                alignSelf: 'center',
-                marginTop: 20,
-                color:'#fff'
-              }}>
-              Score
+              style={styles.scoreText}>
+              SCORE
             </Text>
             <Text 
-              style={{
-                fontSize: 40,
-                fontWeight: '800',
-                alignSelf: 'center',
-                marginTop: 20,
-                color: 'green',
-              }}>
+              style={styles.scoreNumber}>
               {getTextScore()}
             </Text>
             <TouchableOpacity
-              style={{
-                alignSelf: 'center',
-                height: 40,
-                padding: 10,
-              
-                borderRadius: 10,
-                marginTop: 20,
-                marginBottom: 20,
-                backgroundColor:'#0a203e',
-                color:'#fff',
-                elevation:5
-              }}
+              style={styles.closeBUtton}
               onPress={() => {
                 setModalVisible(!modalVisible);
                 navigation.navigate('Home')
                 reset()
               }}>
-              <Text style={{ color:'#fff',paddingHorizontal:10,letterSpacing:0.8}}>Close</Text>
+              <Text style={styles.closeBUttonText}>Close</Text>
             </TouchableOpacity>
           {/* </View> */}
           </LinearGradient>

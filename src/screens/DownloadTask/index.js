@@ -7,6 +7,8 @@ import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-nat
 import {windowHeight,windowWidth} from '../../utiles/Dimensions'
 import { taskdata } from './taskdata';
 import LinearGradient from 'react-native-linear-gradient'
+import styles from './style'
+
 const DownloadTask = () => {
 
     const navigation = useNavigation();
@@ -44,7 +46,7 @@ const DownloadTask = () => {
 
   return (
     <View style={{flex:1,backgroundColor:'#0a203e'}}>
-    <View style={{marginTop:30,marginHorizontal:20,}}>
+    <View style={styles.mainContiner}>
 
  
         <FlatList
@@ -56,25 +58,25 @@ const DownloadTask = () => {
        useAngle={true}
        angle={322}
        angleCenter={{x:0.5,y:0.5}}
-      style={{flex:0.2,borderRadius:10,height:100,elevation:5,marginVertical:10,borderWidth:1,borderColor:'#1f4c86',justifyContent:'center'}}>
+      style={styles.linearGradient}>
     
       <View style={{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center'}}>
-      <Image style={{width:60,height:60,marginLeft:10}} source={item.src}/>
-                <View style={{marginLeft:30,flexDirection:'row',alignItems:'center'}}>
+      <Image style={styles.appImage} source={item.src}/>
+                <View style={{marginLeft:responsiveWidth(5),flexDirection:'row',alignItems:'center'}}>
                 <View>
-                    <Text style={{color:'#fff',fontSize:20,fontWeight:'bold'}} >{item.app}</Text>
+                    <Text style={styles.appName} >{item.app}</Text>
                     <Text style={{color:'#fff'}}>{item.info}</Text>
                     <TouchableOpacity>
-                    <Text style={{color:'#fff',fontSize:14,fontWeight:500}}>TRY NOW</Text>
+                    <Text style={styles.trynow}>TRY NOW</Text>
                     </TouchableOpacity>
                     
                 </View>
 
                 <TouchableOpacity>
-                <View style={{marginLeft:30,width:65,height:30,backgroundColor:'#0a203e',borderRadius:15,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                <View style={styles.buttonMain}>
                     <Text style={{color:'#fff'}}>12.0</Text>
-                    <View style={{width:20,height:20,borderRadius:10,backgroundColor:'#1f4c86',justifyContent:'center',marginLeft:6}}>
-                    <IconMaterial  name="greater-than" size={responsiveWidth(4.5)} color="#fff" style={{marginLeft:2}}  />
+                    <View style={styles.arrowiconView}>
+                    <IconMaterial  name="greater-than" size={responsiveWidth(4.5)} color="#fff" style={{marginLeft:responsiveWidth(0.45)}}  />
                     </View>
                 </View>
                 </TouchableOpacity>

@@ -6,6 +6,7 @@ import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from "@react-navigation/native";
 import LinearGradient from 'react-native-linear-gradient'
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
+import styles from './style'
 
 const Wallet = () => {
   const [coin, setCoin] = useState(5660)
@@ -75,31 +76,31 @@ const Wallet = () => {
         useAngle={true}
         angle={322}
         angleCenter={{ x: 0.5, y: 0.5 }}
-        style={{ flex: 0.2, borderRadius: 10, height: 50, elevation: 5, margin: 20, borderWidth: 1, borderColor: '#1f4c86', justifyContent: 'center' }}>
+        style={styles.balanceLinearGradient}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }} >
           <View style={{}}>
-            <Text style={{ color: "#fff", fontSize: 29, fontWeight: 500 }} >{coin}</Text>
-            <Text style={{ color: '#fff', letterSpacing: 2, fontSize: 16 }} >Coins</Text>
+            <Text style={styles.balanceLinearGradientCoin} >{coin}</Text>
+            <Text style={styles.balanceLinearGradientCoinText} >Coins</Text>
           </View>
-          <Image style={{ width: 90, height: 70 }} source={require("../../assets/coin.png")} />
+          <Image style={styles.balanceLinearGradientImg} source={require("../../assets/coin.png")} />
         </View>
       </LinearGradient>
 
-      <View style={{ flex: 0.8, marginHorizontal: 20 }}>
-        <Text style={{ color: '#fff', fontSize: 18 }} >Redeem Reward Via</Text>
+      <View style={{ flex: 0.8, marginHorizontal: responsiveWidth(5) }}>
+        <Text style={styles.redeenTxt} >Redeem Reward Via</Text>
 
         <LinearGradient colors={["#0a203e", "#1f4c86"]}
           useAngle={true}
           angle={322}
           angleCenter={{ x: 0.5, y: 0.5 }}
-          style={{ flex: 0.2, borderRadius: 10, height: 50, elevation: 5, marginVertical: 20, borderWidth: 1, borderColor: '#1f4c86', justifyContent: 'center' }}>
+          style={styles.paytmLinearGradient}>
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }}>
-            <Image style={{ width: 65, height: 65 }} source={require("../../assets/Paytm.png")} />
+            <Image style={styles.paytmLinearGradientImg} source={require("../../assets/Paytm.png")} />
 
             <View>
-              <Text style={{ color: '#fff', fontSize: 20 }}>Paytm</Text>
-              <Text style={{ color: '#fff', fontSize: 16 }} >Redeem Money on Paytm</Text>
+              <Text style={styles.paytmLinearGradientMainTxt}>Paytm</Text>
+              <Text style={styles.paytmLinearGradientSubTxt} >Redeem Money on Paytm</Text>
             </View>
 
             <TouchableOpacity onPress={() => { setModalPaytm(true) }} >
@@ -114,14 +115,14 @@ const Wallet = () => {
           useAngle={true}
           angle={322}
           angleCenter={{ x: 0.5, y: 0.5 }}
-          style={{ flex: 0.2, borderRadius: 10, height: 50, elevation: 5, marginVertical: 20, borderWidth: 1, borderColor: '#1f4c86', justifyContent: 'center' }}>
+          style={styles.paypalLinearGradient}>
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }}>
-            <Image style={{ width: 56, height: 56 }} source={require("../../assets/PayPal.png")} />
+            <Image style={styles.paypalLinearGradientImg} source={require("../../assets/PayPal.png")} />
 
             <View>
-              <Text style={{ color: '#fff', fontSize: 20 }}>PayPal</Text>
-              <Text style={{ color: '#fff', fontSize: 16 }} >Redeem Money on Paypal</Text>
+              <Text style={styles.paypalLinearGradientMainTxt}>PayPal</Text>
+              <Text style={styles.paypalLinearGradientSubTxt} >Redeem Money on Paypal</Text>
             </View>
 
             <TouchableOpacity onPress={() => { setModalPaypal(true) }}>
@@ -155,9 +156,7 @@ const Wallet = () => {
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, elevation: 5, borderWidth: 1,width: '90%',
-            
-                  borderColor:  '#1f4c86', }}>
+                  style={styles.modelPaypalLinearGradient}>
           {/* <View
             style={{
               backgroundColor: '#1f4c86',
@@ -166,7 +165,7 @@ const Wallet = () => {
 
             }}> */}
 
-            <View style={{ borderWidth: 1, borderColor: '#0a203e', borderRadius: 25, width: 200, alignItems: 'center', marginTop: 20, alignSelf: 'center' }}>
+            <View style={styles.modelPaypalTextInputCintainer}>
               <TextInput
                 onChangeText={text => setPaypalId(text)}
                 placeholder="Enter Your Paypal Id"
@@ -177,56 +176,56 @@ const Wallet = () => {
                 color='#fff'
               />
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginVertical: 10 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginVertical: responsiveWidth(2.45) }}>
 
-              <TouchableHighlight onPress={() => { setSelectedCard(100) }} style={{ borderRadius: 10 }}>
+              <TouchableHighlight onPress={() => { setSelectedCard(100) }} style={{ borderRadius: responsiveWidth(2.45) }}>
                 <LinearGradient colors={["#0a203e", "#1f4c86"]}
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, height: 60, elevation: 5, borderWidth: 1, borderColor: selectedCard === 100 ? 'gold' : '#1f4c86', width: 100, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                  <Image style={{ width: 33, height: 33 }} source={require("../../assets/PayPal.png")} />
-                  <View style={{ width: 40 }}>
-                    <Text style={{ color: "#fff", fontSize: 16, fontWeight: 500 }} >100</Text>
+                  style={[styles.modelPaypalLinearGradientCard,{borderColor: selectedCard === 100 ? 'gold' : '#1f4c86',}]}>
+                  <Image style={{ width: responsiveWidth(8.1), height: responsiveHeight(4) }} source={require("../../assets/PayPal.png")} />
+                  <View style={{ width: responsiveWidth(9.5) }}>
+                    <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.9), fontWeight: 500 }} >100</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <IconFontAwesome name="rupee" size={responsiveWidth(3.5)} color="#fff" style={{ marginRight: responsiveWidth(1) }} />
-                      <Text style={{ color: "#fff", fontSize: 14 }} >50</Text>
+                      <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.8) }} >50</Text>
                     </View>
                   </View>
                 </LinearGradient>
               </TouchableHighlight>
 
 
-              <TouchableHighlight onPress={() => { setSelectedCard(500) }} style={{ borderRadius: 10 }}>
+              <TouchableHighlight onPress={() => { setSelectedCard(500) }} style={{ borderRadius: responsiveWidth(2.45) }}>
                 <LinearGradient colors={["#0a203e", "#1f4c86"]}
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, height: 60, elevation: 5, borderWidth: 1, borderColor: selectedCard === 500 ? 'gold' : '#1f4c86', width: 100, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                  <Image style={{ width: 33, height: 33 }} source={require("../../assets/PayPal.png")} />
-                  <View style={{ width: 40 }}>
-                    <Text style={{ color: "#fff", fontSize: 16, fontWeight: 500 }} >500</Text>
+                  style={[styles.modelPaypalLinearGradientCard,{borderColor: selectedCard === 500 ? 'gold' : '#1f4c86',}]}>
+                  <Image style={{ width:responsiveWidth(8.1), height: responsiveHeight(4) }} source={require("../../assets/PayPal.png")} />
+                  <View style={{ width: responsiveWidth(9.5)  }}>
+                    <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.9), fontWeight: 500 }} >500</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <IconFontAwesome name="rupee" size={responsiveWidth(3.5)} color="#fff" style={{ marginRight: responsiveWidth(1) }} />
-                      <Text style={{ color: "#fff", fontSize: 14 }} >1000</Text>
+                      <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.8) }} >1000</Text>
                     </View>
                   </View>
                 </LinearGradient>
               </TouchableHighlight>
 
 
-              <TouchableHighlight onPress={() => { setSelectedCard(1000) }} style={{ borderRadius: 10 }}>
+              <TouchableHighlight onPress={() => { setSelectedCard(1000) }} style={{ borderRadius: responsiveWidth(2.45) }}>
                 <LinearGradient colors={["#0a203e", "#1f4c86"]}
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, height: 60, elevation: 5, borderWidth: 1, borderColor: selectedCard === 1000 ? 'gold' : '#1f4c86', width: 100, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                  <Image style={{ width: 33, height: 33 }} source={require("../../assets/PayPal.png")} />
-                  <View style={{ width: 40 }}>
-                    <Text style={{ color: "#fff", fontSize: 16, fontWeight: 500 }} >1000</Text>
+                  style={[styles.modelPaypalLinearGradientCard,{borderColor: selectedCard === 1000 ? 'gold' : '#1f4c86',}]}>
+                  <Image style={{  width:responsiveWidth(8.1), height: responsiveHeight(4)  }} source={require("../../assets/PayPal.png")} />
+                  <View style={{ width: responsiveWidth(9.5) }}>
+                    <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.9), fontWeight: 500 }} >1000</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <IconFontAwesome name="rupee" size={responsiveWidth(3.5)} color="#fff" style={{ marginRight: responsiveWidth(1) }} />
-                      <Text style={{ color: "#fff", fontSize: 14 }} >50</Text>
+                      <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.8) }} >50</Text>
                     </View>
                   </View>
                 </LinearGradient>
@@ -236,19 +235,7 @@ const Wallet = () => {
 
             <View style={{ flexDirection: 'row', alignSelf: 'center' }} >
               <TouchableOpacity
-                style={{
-                  alignSelf: 'center',
-                  height: 40,
-                  padding: 10,
-
-                  borderRadius: 10,
-                  marginTop: 20,
-                  marginBottom: 20,
-                  backgroundColor: '#0a203e',
-                  color: '#fff',
-                  elevation: 5,
-                  marginRight: 30
-                }}
+                style={styles.modelPaypalSubmitButton}
 
                 onPress={() => {
 
@@ -259,22 +246,11 @@ const Wallet = () => {
                   // // navigation.navigate('Home')
                   // reset()
                 }}>
-                <Text style={{ color: '#fff', paddingHorizontal: 10, letterSpacing: 0.8 }}>Submit</Text>
+                <Text style={styles.modelPaypalSubmitButtonTxet}>Submit</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={{
-                  alignSelf: 'center',
-                  height: 40,
-                  padding: 10,
-
-                  borderRadius: 10,
-                  marginTop: 20,
-                  marginBottom: 20,
-                  backgroundColor: '#0a203e',
-                  color: '#fff',
-                  elevation: 5
-                }}
+                style={styles.modelPaypalCloseButton}
 
                 onPress={() => {
                   setSelectedCard()
@@ -283,7 +259,7 @@ const Wallet = () => {
                   // // navigation.navigate('Home')
                   // reset()
                 }}>
-                <Text style={{ color: '#fff', paddingHorizontal: 10, letterSpacing: 0.8 }}>Close</Text>
+                <Text style={styles.modelPaypalCloseButtonText}>Close</Text>
               </TouchableOpacity>
             </View>
             </LinearGradient>
@@ -310,9 +286,7 @@ const Wallet = () => {
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, elevation: 5, borderWidth: 1,width: '90%',
-            
-                  borderColor:  '#1f4c86', }}>
+                  style={styles.modelPaytmLinearGradient}>
           {/* <View
             style={{
               backgroundColor: '#1f4c86',
@@ -320,7 +294,7 @@ const Wallet = () => {
               borderRadius: 10
             }}> */}
 
-            <View style={{ borderWidth: 1, borderColor: '#0a203e', borderRadius: 25, width: 200, alignItems: 'center', marginTop: 20, alignSelf: 'center' }}>
+            <View style={styles.modelPaytmTextInputCintainer}>
               <TextInput
                 placeholder="Enter Your Paytm Number"
                 placeholderTextColor="#fff"
@@ -331,21 +305,21 @@ const Wallet = () => {
                 color='#fff'
               />
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginVertical: 10 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginVertical: responsiveWidth(2.45) }}>
 
-              <TouchableHighlight onPress={() => { setSelectedCard(100) }} style={{ borderRadius: 10 }}>
+              <TouchableHighlight onPress={() => { setSelectedCard(100) }} style={{ borderRadius: responsiveWidth(2.45) }}>
 
                 <LinearGradient colors={["#0a203e", "#1f4c86"]}
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, height: 60, elevation: 5, borderWidth: 1, borderColor: selectedCard === 100 ? 'gold' : '#1f4c86', width: 100, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                  <Image style={{ width: 40, height: 40 }} source={require("../../assets/Paytm.png")} />
-                  <View style={{ width: 40 }}>
-                    <Text style={{ color: "#fff", fontSize: 16, fontWeight: 500 }} >100</Text>
+                  style={[styles.modelPaytmLinearGradientCard,{borderColor: selectedCard === 100 ? 'gold' : '#1f4c86',}]}>
+                  <Image style={{ width: responsiveWidth(8), height: responsiveHeight(4.8) }} source={require("../../assets/Paytm.png")} />
+                  <View style={{ width: responsiveWidth(9.5) }}>
+                    <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.9), fontWeight: 500 }} >100</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <IconFontAwesome name="rupee" size={responsiveWidth(3.5)} color="#fff" style={{ marginRight: responsiveWidth(1) }} />
-                      <Text style={{ color: "#fff", fontSize: 14 }} >50</Text>
+                      <Text style={{ color: "#fff", fontSize:  responsiveFontSize(1.8) }} >50</Text>
                     </View>
                   </View>
                 </LinearGradient>
@@ -356,13 +330,13 @@ const Wallet = () => {
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, height: 60, elevation: 5, borderWidth: 1, borderColor: selectedCard === 500 ? 'gold' : '#1f4c86', width: 100, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                  <Image style={{ width: 40, height: 40 }} source={require("../../assets/Paytm.png")} />
-                  <View style={{ width: 40 }}>
-                    <Text style={{ color: "#fff", fontSize: 16, fontWeight: 500 }} >500</Text>
+                  style={[styles.modelPaytmLinearGradientCard,{borderColor: selectedCard === 500 ? 'gold' : '#1f4c86',}]}>
+                  <Image style={{ width: responsiveWidth(8), height: responsiveHeight(4.8)  }} source={require("../../assets/Paytm.png")} />
+                  <View style={{  width: responsiveWidth(9.5) }}>
+                    <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.9), fontWeight: 500 }} >500</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <IconFontAwesome name="rupee" size={responsiveWidth(3.5)} color="#fff" style={{ marginRight: responsiveWidth(1) }} />
-                      <Text style={{ color: "#fff", fontSize: 14 }} >100</Text>
+                      <Text style={{ color: "#fff", fontSize:  responsiveFontSize(1.8) }} >100</Text>
                     </View>
                   </View>
                 </LinearGradient>
@@ -373,15 +347,15 @@ const Wallet = () => {
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, height: 60, elevation: 5, borderWidth: 1, borderColor: selectedCard === 1000 ? 'gold' : '#1f4c86', width: 100, alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                  style={[styles.modelPaytmLinearGradientCard,{borderColor: selectedCard === 1000 ? 'gold' : '#1f4c86',}]}>
 
-                  <Image style={{ width: 40, height: 40 }} source={require("../../assets/Paytm.png")} />
+                  <Image style={{ width: responsiveWidth(8), height: responsiveHeight(4.8) }} source={require("../../assets/Paytm.png")} />
 
-                  <View style={{ width: 40 }}>
-                    <Text style={{ color: "#fff", fontSize: 16, fontWeight: 500 }} >1000</Text>
+                  <View style={{  width: responsiveWidth(9.5)}}>
+                    <Text style={{ color: "#fff", fontSize: responsiveFontSize(1.9), fontWeight: 500 }} >1000</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                       <IconFontAwesome name="rupee" size={responsiveWidth(3.5)} color="#fff" style={{ marginRight: responsiveWidth(1) }} />
-                      <Text style={{ color: "#fff", fontSize: 14 }} >50</Text>
+                      <Text style={{ color: "#fff",fontSize:  responsiveFontSize(1.8) }} >50</Text>
                     </View>
                   </View>
                 </LinearGradient>
@@ -395,19 +369,7 @@ const Wallet = () => {
 
             <View style={{ flexDirection: 'row', alignSelf: 'center' }} >
               <TouchableOpacity
-                style={{
-                  alignSelf: 'center',
-                  height: 40,
-                  padding: 10,
-
-                  borderRadius: 10,
-                  marginTop: 20,
-                  marginBottom: 20,
-                  backgroundColor: '#0a203e',
-                  color: '#fff',
-                  elevation: 5,
-                  marginRight: 30
-                }}
+                style={styles.modelPaypalSubmitButton}
 
                 onPress={() => {
                   if ((paytmNo.length) == 10 && selectedCard != null) {
@@ -417,22 +379,11 @@ const Wallet = () => {
                   // // navigation.navigate('Home')
                   // reset()
                 }}>
-                <Text style={{ color: '#fff', paddingHorizontal: 10, letterSpacing: 0.8 }}>Submit</Text>
+                <Text style={styles.modelPaypalSubmitButtonTxet}>Submit</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={{
-                  alignSelf: 'center',
-                  height: 40,
-                  padding: 10,
-
-                  borderRadius: 10,
-                  marginTop: 20,
-                  marginBottom: 20,
-                  backgroundColor: '#0a203e',
-                  color: '#fff',
-                  elevation: 5
-                }}
+                style={styles.modelPaypalCloseButton}
 
                 onPress={() => {
                   setSelectedCard()
@@ -441,7 +392,7 @@ const Wallet = () => {
                   // // navigation.navigate('Home')
                   // reset()
                 }}>
-                <Text style={{ color: '#fff', paddingHorizontal: 10, letterSpacing: 0.8 }}>Close</Text>
+                <Text style={styles.modelPaypalCloseButtonText}>Close</Text>
               </TouchableOpacity>
             </View>
             </LinearGradient>
@@ -471,13 +422,7 @@ const Wallet = () => {
                   useAngle={true}
                   angle={322}
                   angleCenter={{ x: 0.5, y: 0.5 }}
-                  style={{ borderRadius: 10, elevation: 5, borderWidth: 1,   width: '65%',
-              borderRadius: 10,
-              
-              alignItems: 'center',
-              
-              justifyContent: 'center',
-                  borderColor:  '#1f4c86', }}>
+                  style={styles.successModel}>
           {/* <View
             style={{
               backgroundColor: '#1f4c86',
@@ -490,14 +435,14 @@ const Wallet = () => {
             }}> */}
             <View>
             <TouchableOpacity onPress={()=>{setModalConfim(!modalConfirm)}} >
-            <Icon name="close" size={responsiveWidth(5.5)} color="#fff" style={{position:'absolute',right:-10,marginTop:3}} />
+            <Icon name="close" size={responsiveWidth(5.5)} color="#fff" style={{position:'absolute',right:responsiveWidth(-2.45),marginTop:responsiveWidth(1.25)}} />
             </TouchableOpacity>
-            <Text style={{color:'#fff',fontSize:18,marginTop:30,fontWeight:500}}>Amount Redeem Successful</Text>
+            <Text style={styles.successModelText}>Amount Redeem Successful</Text>
          
             </View>
             
 
-            <Image style={{ width: 150, height: 150 }} source={require("../../assets/greentick.gif")} />
+            <Image style={{ width: responsiveWidth(43.7), height: responsiveHeight(14) }} source={require("../../assets/greentick.gif")} />
             
 
 

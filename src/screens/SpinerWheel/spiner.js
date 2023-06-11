@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-
+import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 
 import WheelOfFortune from 'react-native-wheel-of-fortune';
 
@@ -48,10 +48,10 @@ class Spiner extends Component {
   render() {
     const wheelOptions = {
       rewards: participants,
-      knobSize: 30,
-      borderWidth: 5,
+      knobSize: responsiveWidth(7.5),
+      borderWidth: responsiveWidth(1.5),
       borderColor: '#ffd843',
-      innerRadius: 30,
+      innerRadius: responsiveWidth(7.5),
       duration: 4000,
       backgroundColor: 'transparent',
       textAngle: 'horizontal',
@@ -74,7 +74,7 @@ class Spiner extends Component {
               onPress={() => this.buttonPress() }
               style={styles.startButton}>
               <Text style={styles.startButtonText}>Spin to win! </Text>
-              <Image style={{width:25,height:20}} source={require('../../assets/coin.png')}/>
+              <Image style={{width:responsiveWidth(6.25),height:responsiveHeight(2.5)}} source={require('../../assets/coin.png')}/>
             </TouchableOpacity>
           </View>
         )}
@@ -123,13 +123,13 @@ const styles = StyleSheet.create({
   },
   startButton: {
     backgroundColor: '#1f4c86',
-    marginTop:50,
-    padding: 10,
-    borderRadius:20,
+    marginTop:responsiveWidth(12.1),
+    padding: responsiveWidth(2.5),
+    borderRadius:responsiveWidth(5),
     flexDirection:'row'
   },
   startButtonText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(1.9),
     color: '#fff',
     fontWeight: 'bold',
   },
@@ -141,17 +141,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   winnerText: {
-    fontSize: 18,
+    fontSize: responsiveFontSize(2.1),
     color:'#fff',
     
   },
   tryAgainButton: {
-    padding: 10,
+    padding: responsiveWidth(2.5),
     backgroundColor: '#1f4c86',
-    borderRadius:20,
+    borderRadius:responsiveWidth(5),
   },
   tryAgainText: {
-    fontSize: 16,
+    fontSize: responsiveFontSize(1.9),
     fontWeight: 'bold',
     color: '#fff',
   },

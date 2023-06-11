@@ -31,11 +31,11 @@ const SpinerWheel = () => {
         (
            
           <View style={{ flexDirection: 'row' }}>
-            <Icon  name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} />
-            <TouchableOpacity onPress={()=>{navigation.navigate('Profile')}}>
-            <Icon  name="person" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(3) }} />
-            </TouchableOpacity>
-          </View>
+          <Icon onPress={()=>{navigation.navigate('Wallet')}} name="wallet" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(5)}} />
+          <TouchableOpacity onPress={()=>{navigation.navigate('Profile')}}>
+          <Icon  name="person" size={responsiveWidth(6)} color="#fff" style={{ marginRight: responsiveWidth(3) }} />
+          </TouchableOpacity>
+        </View>
         
       ),
 
@@ -44,10 +44,10 @@ const SpinerWheel = () => {
 
   return (
     <View style={{flex:1,backgroundColor:'#0a203e'}}>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:40}}>
-          <Text style={{color:'#fff',fontSize:30}}>DAILY SPINNER</Text>
-          <Text style={{color:'#fff',fontSize:12,letterSpacing:2}}>Spin Daily and get Exciting cash rewards</Text>
-          <Text style={{color:'#fff',fontSize:16,marginTop:10}}>Win upto Rs.100 Daily</Text>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:responsiveWidth(9.8)}}>
+          <Text style={{color:'#fff',fontSize:responsiveFontSize(3.55)}}>DAILY SPINNER</Text>
+          <Text style={{color:'#fff',fontSize:responsiveFontSize(1.7),letterSpacing:responsiveWidth(0.37)}}>Spin Daily and get Exciting cash rewards</Text>
+          <Text style={{color:'#fff',fontSize:responsiveFontSize(1.9),marginTop:responsiveWidth(2.5)}}>Win upto Rs.100 Daily</Text>
         </View>
       <Spiner/>
     </View>
