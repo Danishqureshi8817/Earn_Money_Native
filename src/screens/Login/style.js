@@ -9,22 +9,24 @@ export const styles = StyleSheet.create({
         // backgroundColor:'#203f81',
         alignItems:'center',
        
+       
 
     },
     textWlcm:{
       color:'#fff',
-      fontSize:responsiveFontSize(8),
-      marginTop:responsiveWidth(80),
+      fontSize:responsiveFontSize(7),
+      marginTop:responsiveWidth(8),
      fontFamily:'Poppins-BoldItalic',
      marginBottom:0,
 
     },
     textLogin:{
         color:'#fff',
-        marginTop:0,
-        fontSize:responsiveFontSize(2),
+     
+        fontSize:responsiveFontSize(2.1),
         marginBottom:responsiveWidth(10),
-        fontFamily:'Poppins-ExtraLightItalic'
+        fontFamily:'Poppins-ExtraLightItalic',
+       
     },
     inputMain:{
         
@@ -52,6 +54,7 @@ export const styles = StyleSheet.create({
         buttonText:{
             color:'#fff',
             fontWeight:'bold',
+           
            
 
         }

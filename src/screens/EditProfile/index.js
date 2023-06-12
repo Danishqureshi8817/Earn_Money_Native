@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
-import {View,Text,TouchableOpacity,ImageBackground,TextInput, Pressable, KeyboardAvoidingView,ScrollView } from 'react-native';
+import {View,Text,TouchableOpacity,ImageBackground,TextInput, Pressable, KeyboardAvoidingView,ScrollView,SafeAreaView } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 
@@ -113,14 +113,14 @@ const EditProfileScreen = () => {
     fall = new Animated.Value(1);
 
     return (
-       
-        <KeyboardAvoidingView style={styles.container} behavior='height'>
+         <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView  behavior='height'>
   <ScrollView>
 
         <View style={styles.container}>
             <BottomSheet
                 ref={this.bs}
-                snapPoints={[320,0]}
+                snapPoints={[responsiveWidth(78),responsiveWidth(0)]}
                 renderContent={this.renderInner}
                 renderHeader={this.renderHeader}
                 initialSnap={1}
@@ -317,7 +317,7 @@ const EditProfileScreen = () => {
         </View>
         </ScrollView>
         </KeyboardAvoidingView>
-      
+        </SafeAreaView>
     );
 };
 

@@ -1,6 +1,6 @@
 import { View, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity,Modal,TouchableHighlight } from 'react-native'
 import React from 'react'
-import { useLayoutEffect,useState,useRef } from "react";
+import { useLayoutEffect,useState,useEffect } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
@@ -11,17 +11,35 @@ import { windowHeight, windowWidth } from '../../utiles/Dimensions'
 import styles from './style'
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient'
-
+import YoutubePlayer from "react-native-youtube-iframe";
 
 const Home = () => {
 
+  const [playing, setPlaying] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisibleVideo, setModalVisibleVideo] = useState(false);
+  const [videoClose, setVideoClose] = useState(false)
 
   const navigation = useNavigation();
+
 
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
   };
+
+//timer login
+const [counter, setCounter] = useState(0)
+
+useEffect(() => {
+  const timer = counter>0 && setInterval(() => {
+    setCounter(counter-1)
+  }, 1000);
+
+  return () => {
+    clearInterval(timer)
+  }
+}, [counter])
+
 
 
 
@@ -139,15 +157,16 @@ const Home = () => {
      
 
            
-            <View style={{ alignItems: 'center', marginTop: responsiveWidth(2.5) }}>
-            <TouchableHighlight onPress={()=>{navigation.navigate('SpinerWheel')}}  style={{backgroundColor:'#1f4c86',zIndex:0.5,top:responsiveWidth(39),left:responsiveWidth(19),paddingHorizontal:responsiveWidth(2),borderRadius:responsiveWidth(2.5)}} >
-                   <Text  style={{color:'#fff',fontWeight:400}}>Spin Now</Text>
-                </TouchableHighlight>
+            <View style={{ alignItems: 'center', marginTop: responsiveWidth(5) }}>
+            <TouchableOpacity onPress={()=>{navigation.navigate('SpinerWheel')}}  >
+                 
+                
               <View style={styles.spineImgView}>
                 
-                <Image style={styles.spineImg} source={require('../../assets/spinerposter.jpg')} />
+                <Image style={styles.spineImg} source={require('../../assets/Spin4.jpg')} />
 
               </View>
+              </TouchableOpacity>
             </View>
             
           </View>
@@ -173,10 +192,12 @@ const Home = () => {
                     <Image style={styles.gameZoneSingleImg} source={require('../../assets/q2.png')} />
                     <Text style={styles.gameZoneImgText}>Math Quiz</Text>
                   </View>
+                  <TouchableOpacity onPress={ ()=>{navigation.navigate('Login')} }>
                   <View style={styles.gameZoneSingleImgView}>
                     <Image style={styles.gameZoneSingleImg} source={require('../../assets/q3.png')} />
                     <Text style={styles.gameZoneImgText}>GK Quiz</Text>
                   </View>
+                  </TouchableOpacity>
 
                  <TouchableOpacity onPress={ ()=>{setModalVisible(true)} }>
                  <View style={styles.gameZoneSingleImgView}>
@@ -338,15 +359,133 @@ const Home = () => {
               <Text style={styles.videoMainText}>Earn Money By Watch Video</Text>
               <View style={{ alignItems: 'center', marginTop: responsiveWidth(2.5) }}>
 
+                  <TouchableOpacity 
+                  onPress={()=>{
+                    setModalVisibleVideo(true)
+                    setCounter(30)
+                    setTimeout(()=>{
+                      setVideoClose(true)
+                      
+                    },30000)
+                  }} >
                 <View style={styles.videoImgView}>
                   <Image style={styles.videoImg} source={require('../../assets/videoicon.png')} />
-
                 </View>
+                </TouchableOpacity>
+
               </View>
             </View>
 
 {/* Video-End*/}
 
+{/* Video-Model_Start*/}
+
+<Modal
+      animationType="slide"
+      transparent={true}
+      visible={modalVisibleVideo}
+      onRequestClose={() => {
+        setModalVisibleVideo(!modalVisibleVideo);
+        
+        setVideoClose(!videoClose)
+      }}
+      >
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: 'rgba(0,0,0,.5)',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+         <LinearGradient colors={["#0a203e", "#1f4c86"]}
+                  useAngle={true}
+                  angle={322}
+                  angleCenter={{ x: 0.5, y: 0.5 }}
+                  style={{ borderRadius: responsiveWidth(2.5), elevation: responsiveWidth(2.5), borderWidth: responsiveWidth(0.2),width: '90%',height:responsiveHeight(40),
+                  alignItems:'center',
+                  borderColor:  '#1f4c86', }}>
+        {/* <View
+          style={{
+            backgroundColor: '#1f4c86',
+            width: '90%',
+             alignItems:'center',
+            borderRadius: 10,
+          }}> */}
+       
+          {/* {videoClose?
+          <TouchableOpacity onPress={()=>{ 
+            setModalVisibleVideo(!modalVisibleVideo)
+          
+            setVideoClose(!videoClose)
+            }} style={{position:'absolute',right:responsiveWidth(3.5),top:responsiveWidth(3)}}>
+          <IconEntypo name="cross" size={responsiveWidth(6)} color="#fff"  />
+          </TouchableOpacity>
+           : <View style={{backgroundColor:'#1f4c86',borderRadius:responsiveWidth(3),width:responsiveWidth(6),height:responsiveHeight(3),position:'absolute',right:responsiveWidth(3.5),top:responsiveWidth(3),alignItems:'center',justifyContent:'center'}}><Text style={{color:'#fff',}} >{counter}</Text></View>} */}
+          
+   <View style={{marginTop:responsiveWidth(15)}}>
+
+   <YoutubePlayer
+          style={{}}
+          width={responsiveWidth(85)}
+          height={responsiveHeight(23.5)}
+          play={playing}
+          videoId={"EdftT8GMU1U"}
+          // onChangeState={onStateChange}
+        />
+   </View>
+        
+         
+
+         
+          
+   {videoClose?
+        
+    <TouchableOpacity
+            style={{
+         
+              height: responsiveHeight(4.8),
+              padding: responsiveWidth(2.5),
+            
+              borderRadius: responsiveWidth(2.5),
+              marginTop: responsiveWidth(5),
+              marginBottom: responsiveWidth(5),
+              backgroundColor:'#0a203e',
+              color:'#fff',
+              elevation:responsiveWidth(1.2)
+            }}
+            onPress={() => {
+              setModalVisibleVideo(!modalVisibleVideo);
+              setVideoClose(!videoClose)
+           
+            
+            }}>
+            <Text style={{ color:'#fff',paddingHorizontal:responsiveWidth(2.4),letterSpacing:responsiveFontSize(0.095),}}>Claim Reward</Text>
+          </TouchableOpacity> :
+            
+          <TouchableOpacity
+            style={{
+         
+              height: responsiveHeight(4.8),
+              padding: responsiveWidth(2.5),
+            
+              borderRadius: responsiveWidth(2.5),
+              marginTop: responsiveWidth(5),
+              marginBottom: responsiveWidth(5),
+              backgroundColor:'#808080',
+              color:'#fff',
+              elevation:responsiveWidth(1.2)
+            }}
+          >
+            <Text style={{ color:'#fff',paddingHorizontal:responsiveWidth(2.4),letterSpacing:responsiveFontSize(0.095),}}>Claim Reward  {counter}</Text>
+          </TouchableOpacity>
+           }
+
+        {/* </View> */}
+        </LinearGradient>
+      </View>
+    </Modal>
+
+{/* Video-ModelEnd*/}
           </View>
 
           {/* Contest Zone-End*/}

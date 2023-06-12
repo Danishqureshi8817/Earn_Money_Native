@@ -35,14 +35,15 @@ export default styles = StyleSheet.create({
     fontWeight:500
  },
  buttonMain:{
-    marginLeft:responsiveWidth(6),
+
     width:responsiveWidth(15.6),
     height:responsiveHeight(3.5),
     backgroundColor:'#0a203e',
     borderRadius:responsiveWidth(3.45),
     flexDirection:'row',
     justifyContent:'center',
-    alignItems:'center'
+    alignItems:'center',
+    marginLeft:responsiveWidth(6),
  },
  arrowiconView:{
     width:responsiveWidth(4.75),

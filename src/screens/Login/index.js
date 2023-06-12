@@ -1,4 +1,4 @@
-import { View, Text,SafeAreaView,StyleSheet,TextInput } from 'react-native'
+import { View, Text,SafeAreaView,StyleSheet,TextInput, TouchableOpacity,Image } from 'react-native'
 import React from 'react'
 import { styles } from './style'
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -6,10 +6,16 @@ import { responsiveHeight,responsiveWidth,responsiveFontSize} from "react-native
 import LinearGradient from 'react-native-linear-gradient';
 
 
+
 const Login = () => {
   return (
 
-    <LinearGradient colors={['#203f81', '#4f62d8']} style={{flex:1}}>
+    <LinearGradient colors={['#1f4c86', '#0a203e']} 
+        useAngle={true}
+                  angle={190}
+                  angleCenter={{ x: 0.5, y: 0.5 }}
+      
+    style={{flex:1}}>
       <View style={styles.mainContainer}>
         {/* <Text style={styles.textWlcm}>Welcome Back</Text>
         <Text style={styles.textLogin}>Login to your account</Text>
@@ -29,18 +35,28 @@ const Login = () => {
       
       />
         </View> */}
-        <Text style={styles.textWlcm}>Plantly</Text>
-        <Text style={styles.textLogin}>can't seem to keep a plant alive?{"\n"}     Let us help you change that</Text>
+        <Image style={{width:responsiveWidth(47),height:responsiveHeight(32),marginTop:responsiveWidth(20)}} source={require('../../assets/l1.png')} />
+        <Text style={styles.textWlcm}>Welcome</Text>
+        <Text style={styles.textLogin}>Create your Account & {"\n"}        Start Earning</Text>
 
-
-        <LinearGradient colors={['#2a3a5a','#304577' ,'#374e91']} style={styles.inputMain}
+        <LinearGradient colors={['#1f4c86', '#0a203e']} style={styles.inputMain}
            start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
-          <View style={{flexDirection:'row'}}>
-          <Icon style={{ marginRight:responsiveWidth(2)}} name="google-plus-g" size={responsiveWidth(4.5)} color="#4f62d8" />
+
+           <TouchableOpacity onPress={()=>{console.warn('login')}}>
+          <View style={{flexDirection:'row',alignItems:'center'}}>
+          <Icon style={{position:'absolute',left:responsiveWidth(-26)}} name="google-plus-g" size={responsiveWidth(5.5)} color="#fff" />
             <Text  style={styles.buttonText}>LOGIN</Text>
+            
           </View>
-          
+          </TouchableOpacity>
         </LinearGradient>
+
+<View style={{marginTop:responsiveWidth(3.5)}}>
+<Text style={{color:'#fff',fontSize:responsiveFontSize(1.7),fontFamily:'Poppins-Light',alignSelf:'center'}}>Whatsapp us for more information</Text>
+<Text style={{color:'#fff',fontSize:responsiveFontSize(1.5),fontFamily:'Poppins-Light',alignSelf:'center',textDecorationLine:'underline',fontWeight:'bold'}}>+91 7418529637</Text>
+<Text style={{color:'#fff',fontSize:responsiveFontSize(1.7),fontFamily:'Poppins-Light',alignSelf:'center'}}>Or</Text>
+<Text style={{color:'#fff',fontSize:responsiveFontSize(1.7),fontFamily:'Poppins-Light',alignSelf:'center'}}>Visit our website <Text  style={{color:'#fff',fontSize:responsiveFontSize(1.7),fontFamily:'Poppins-Light',letterSpacing:responsiveWidth(0.15),textDecorationLine:'underline',fontWeight:'bold'}}> www.earnmoney.in</Text> </Text>
+</View>
 
 
         {/* <LinearGradient colors={['#2a3a5a','#304577' ,'#374e91']} style={styles.inputMain}

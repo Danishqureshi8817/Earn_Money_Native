@@ -4,8 +4,12 @@
 
     <!-- image picker permission -->
 <uses-permission android:name="android.permission.CAMERA"/>
+<uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
 <uses-feature android:name="android.hardware.camera" android:required="false" />
 <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+
+    <!-- image picker permission -->
+
 
     <application
       android:name=".MainApplication"

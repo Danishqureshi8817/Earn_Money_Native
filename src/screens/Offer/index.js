@@ -60,7 +60,7 @@ const Offer = () => {
        angleCenter={{x:0.5,y:0.5}}
       style={styles.linearGradient}>
     
-      <View style={{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center'}}>
+      <View style={{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center',margin:responsiveWidth(6)}}>
       <Image style={styles.appImage} source={item.src}/>
                 <View style={{marginLeft:responsiveWidth(5),flexDirection:'row',alignItems:'center'}}>
                 <View>
