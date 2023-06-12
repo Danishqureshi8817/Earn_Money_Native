@@ -1,6 +1,6 @@
 import { View, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity,Modal,TouchableHighlight } from 'react-native'
 import React from 'react'
-import { useLayoutEffect,useState,useEffect } from "react";
+import { useLayoutEffect,useState,useEffect,useRef } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from "@react-navigation/native";
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
@@ -12,9 +12,12 @@ import styles from './style'
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient'
 import YoutubePlayer from "react-native-youtube-iframe";
+import CheckInternet from '../CheckInternet/index'
 
 const Home = () => {
 
+  const [checkInternet, setCheckInternet] = useState(false)
+  //  const isInternet = useRef(checkInternet)
   const [playing, setPlaying] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisibleVideo, setModalVisibleVideo] = useState(false);
@@ -45,8 +48,11 @@ useEffect(() => {
 
 //  Header start
   useLayoutEffect(() => {
+  
     navigation.setOptions({
+      
       headerLeft: () => (
+        
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
 
           <Icon name="menu" size={responsiveWidth(7)} color="#fff" />
@@ -69,6 +75,8 @@ useEffect(() => {
           </View>
         
       ),
+     
+
 
     });
   }, []);
@@ -87,10 +95,17 @@ useEffect(() => {
 
   return (
 
+
+
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a203e' }}>
-   
-      <ScrollView>
+
+    <CheckInternet checkInternet={checkInternet} setCheckInternet={setCheckInternet} />
+
+
+       {checkInternet===true? (
+        <ScrollView>
         <View style={{ flex: 1, }}>
+        
           {/* Slider */}
           <View style={[styles.slider]}>
             <Carousel
@@ -126,7 +141,7 @@ useEffect(() => {
 
           {/* Get Free Coins -Start */}
           <View style={{ flex: 0.20, marginTop: responsiveHeight(1.8) }}>
-
+             
             <Text style={styles.getFreeMainText}>Get Free Coins</Text>
             <View style={{ alignItems: 'center', marginTop: responsiveWidth(2.5)}}>
 
@@ -378,7 +393,11 @@ useEffect(() => {
 
 {/* Video-End*/}
 
-{/* Video-Model_Start*/}
+          </View>
+
+          {/* Contest Zone-End*/}
+
+       {/* Video-Model_Start*/}
 
 <Modal
       animationType="slide"
@@ -486,19 +505,18 @@ useEffect(() => {
     </Modal>
 
 {/* Video-ModelEnd*/}
-          </View>
-
-          {/* Contest Zone-End*/}
-
-       
-
-       
-
 
 
         </View>
-
+       
       </ScrollView>
+       ):(
+        null
+       )}
+     
+      
+
+      
     </SafeAreaView>
   )
 }
