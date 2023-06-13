@@ -12,11 +12,11 @@ import styles from './style'
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient'
 import YoutubePlayer from "react-native-youtube-iframe";
-import CheckInternet from '../CheckInternet/index'
+
 
 const Home = () => {
 
-  const [checkInternet, setCheckInternet] = useState(false)
+
   //  const isInternet = useRef(checkInternet)
   const [playing, setPlaying] = useState(true);
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,7 +24,7 @@ const Home = () => {
   const [videoClose, setVideoClose] = useState(false)
 
   const navigation = useNavigation();
-
+ 
 
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
@@ -99,10 +99,7 @@ useEffect(() => {
 
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a203e' }}>
 
-    <CheckInternet checkInternet={checkInternet} setCheckInternet={setCheckInternet} />
-
-
-       {checkInternet===true? (
+    
         <ScrollView>
         <View style={{ flex: 1, }}>
         
@@ -510,9 +507,7 @@ useEffect(() => {
         </View>
        
       </ScrollView>
-       ):(
-        null
-       )}
+     
      
       
 
