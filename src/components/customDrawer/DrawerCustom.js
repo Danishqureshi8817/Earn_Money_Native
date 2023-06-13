@@ -22,7 +22,7 @@ const CustomDrawer = () => {
     { icon: 'share-social', title: 'Referral' },
     { icon: 'game-controller', title: 'Quiz' },
     { icon: 'cloud-download', title: 'Offer' },
-    { icon: 'information-circle', title: 'About' },
+    { icon: 'headset', title: 'Contact' },
    
 
   ];

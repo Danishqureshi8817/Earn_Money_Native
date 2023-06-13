@@ -98,7 +98,8 @@ const Quiz = () => {
 
 
   return (
-    
+
+ 
     <View style={{flex:1,backgroundColor: '#0a203e' }} >
       <View
         style={{
@@ -275,6 +276,7 @@ const Quiz = () => {
 
 
     </View>
+  
   )
 }
 

@@ -1,4 +1,4 @@
-import React,{ useLayoutEffect} from 'react';
+import React,{ useLayoutEffect,useState} from 'react';
 import {View, SafeAreaView, StyleSheet,Pressable,TouchableOpacity} from 'react-native';
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 import {
@@ -17,7 +17,7 @@ import styles from './style'
 
 
 const Profile = (props) => {
-
+ 
 
   const navigation = useNavigation();
 
@@ -54,8 +54,10 @@ const Profile = (props) => {
 
 
   return (
-    <SafeAreaView style={styles.container}>
 
+    
+    <SafeAreaView style={styles.container}>
+   
       <View style={styles.userInfoSection}>
         <View style={{flexDirection: 'row', marginTop: responsiveWidth(3.5)}}>
           <Avatar.Image 
@@ -125,7 +127,10 @@ const Profile = (props) => {
           </View>
         </TouchableRipple>
       </View>
+
+   
     </SafeAreaView>
+   
   );
 };
 

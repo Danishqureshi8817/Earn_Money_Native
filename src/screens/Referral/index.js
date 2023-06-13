@@ -10,7 +10,10 @@ import Dash from 'react-native-dash';
 import Share from 'react-native-share';
 import styles from './style'
 
+
 const Referral = () => {
+
+
     const [referralCode, setReferralCode] = useState('897459');
 
   const navigation = useNavigation();
@@ -46,8 +49,6 @@ const Referral = () => {
       headerTintColor:'#fff',
       headerStyle: {
         backgroundColor: '#1f4c86'
-        
-
       },
       headerRight: () =>
         (
@@ -66,6 +67,9 @@ const Referral = () => {
 
 
   return (
+
+ 
+
     <View style={{flex:1,backgroundColor: '#0a203e'}}  >
     <View style={{flex:0.6}} >
         <View style={styles.referFriendContainer}>
@@ -166,6 +170,8 @@ const Referral = () => {
 
      
     </View>
+
+   
   )
 }
 

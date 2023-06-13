@@ -1,26 +1,28 @@
 import { View, Text,SafeAreaView } from 'react-native'
-import React,{useState} from 'react'
+import React,{useState,useLayoutEffect} from 'react'
 
 import Navigation from './src/Navigation/index'
-import CheckInternet from './src/screens/CheckInternet/index'
 
+import NetInfo,{useNetInfo} from "@react-native-community/netinfo";
+import CheckInternet from './src/screens/CheckInternet/index';
 
 const App = () => {
-  const [checkInternet, setCheckInternet] = useState(false)
+
+const net = useNetInfo();
+
  
   
   return (
-<>
- {checkInternet==true? (
- <Navigation/>
- ):(null)}
+    <>
+  <Navigation/>
+   
+    {/* { !net.isConnected?(<CheckInternet/>):  ()} */}
+
+</>
+
    
     
-      
-    
-   
-    <CheckInternet checkInternet={checkInternet} setCheckInternet={setCheckInternet} />
-    </>
+
   )
 }
 

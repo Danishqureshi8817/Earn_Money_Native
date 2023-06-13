@@ -1,17 +1,28 @@
 import { View, Text,StatusBar } from 'react-native'
-import React from 'react'
+import React,{useState} from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 
 import Drawer from './Drawer'
 
 
 const Naviagtion = () => {
+
+
   return (
-    <NavigationContainer>
+
+
+
+
+  <NavigationContainer>
     <StatusBar backgroundColor="#1f4c86"/>
     {/* <HomeStack /> */}
     <Drawer/>
   </NavigationContainer>
+
+
+
+
+
   )
 }
 

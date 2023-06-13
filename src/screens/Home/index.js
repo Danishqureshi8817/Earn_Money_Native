@@ -98,8 +98,7 @@ useEffect(() => {
 
 
     <SafeAreaView style={{ flex: 1, backgroundColor: '#0a203e' }}>
-
-    
+  
         <ScrollView>
         <View style={{ flex: 1, }}>
         

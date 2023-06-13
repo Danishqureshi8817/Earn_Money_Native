@@ -11,12 +11,14 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import Animated from 'react-native-reanimated';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Formik } from 'formik';
-import PhoneInput from "react-native-phone-number-input";
+
 import { FormSchema } from '../../utiles/FormSchema';
 import styles from './style'
 
 
+
 const EditProfileScreen = () => {
+
 
     const navigation = useNavigation();
 
@@ -114,6 +116,7 @@ const EditProfileScreen = () => {
 
     return (
          <SafeAreaView style={styles.container}>
+ 
         <KeyboardAvoidingView  behavior='height'>
   <ScrollView>
 
@@ -204,6 +207,9 @@ const EditProfileScreen = () => {
                                 />
                                 {/* { errors.firstname && touched.firstname ? <Text style={{color:'red'}}>{errors.firstname}</Text>:null} */}
                             </View>
+
+
+                            
                             <View style={styles.action}>
                                 <FontAwesome name="user-o" size={responsiveWidth(5)} />
                                 <TextInput
@@ -218,6 +224,8 @@ const EditProfileScreen = () => {
                                     ]}
                                 />
                             </View>
+
+
                             <View style={styles.action}>
                                 <FontAwesome name="user-o" size={responsiveWidth(5)} />
                                 <TextInput
@@ -232,6 +240,8 @@ const EditProfileScreen = () => {
                                     ]}
                                 />
                             </View>
+
+
                             <View style={styles.action}>
                                 <Feather name="phone" size={responsiveWidth(5)} />
                                 <TextInput
@@ -246,21 +256,9 @@ const EditProfileScreen = () => {
                                         styles.textInput
                                     ]}
                                 />
-                                {/* <PhoneInput
-           
-            defaultValue={values.phone}
-            defaultCode='IN'
-            layout="first"
-            onChangeText={handleChange('phone')}
-            // onChangeCountry={handleChange('callingCode')}
-            containerStyle={[styles.textInput,{height:40,backgroundColor:'#FFFFFF',}]}
-            textContainerStyle={{height:40,justifyContent:'center',alignItems:"center"}}
-            textInputStyle={{fontSize:14,color:'#05375a',marginTop:-20,marginBottom:-20}}
-            codeTextStyle={{fontSize:14,marginTop:-20,marginBottom:-20}}
-           
-        
-          /> */}
                             </View>
+
+
                             <View style={styles.action}>
                                 <FontAwesome name="envelope-o" size={responsiveWidth(5)} />
                                 <TextInput
@@ -277,6 +275,8 @@ const EditProfileScreen = () => {
                                     ]}
                                 />
                             </View>
+
+
                             <View style={styles.action}>
                                 <Icon name="map-marker-outline" size={responsiveWidth(5)} />
                                 <TextInput
@@ -291,6 +291,8 @@ const EditProfileScreen = () => {
                                     ]}
                                 />
                             </View>
+
+
                             <View style={styles.action}>
                                 <FontAwesome name="globe" size={responsiveWidth(5)} />
                                 <TextInput
@@ -313,10 +315,14 @@ const EditProfileScreen = () => {
                         </View>
                     )}
                 </Formik>
+
+                
             </Animated.View>
         </View>
         </ScrollView>
         </KeyboardAvoidingView>
+
+      
         </SafeAreaView>
     );
 };

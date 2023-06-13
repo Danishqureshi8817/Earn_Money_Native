@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import React,{useLayoutEffect} from 'react'
+import React,{useLayoutEffect,useState} from 'react'
 import Spiner from './spiner'
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -8,7 +8,7 @@ import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-nat
 
 
 const SpinerWheel = () => {
-
+ 
   const navigation = useNavigation();
 
 
@@ -43,6 +43,8 @@ const SpinerWheel = () => {
   }, []);
 
   return (
+  
+ 
     <View style={{flex:1,backgroundColor:'#0a203e'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:responsiveWidth(9.8)}}>
           <Text style={{color:'#fff',fontSize:responsiveFontSize(3.55)}}>DAILY SPINNER</Text>
@@ -51,6 +53,7 @@ const SpinerWheel = () => {
         </View>
       <Spiner/>
     </View>
+    
   )
 }
 

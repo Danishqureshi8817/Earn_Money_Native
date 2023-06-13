@@ -9,7 +9,8 @@ import Spiner from '../screens/SpinerWheel/index'
 import Quiz from '../screens/Quiz/index';
 import Offer from '../screens/Offer/index'
 import Wallet from '../screens/Wallet/index';
-import Splash from '../screens/Splash/index'
+import Splash from '../screens/Splash/index';
+import Contact from '../screens/Contact/index';
 
 const HomeStack = createNativeStackNavigator();
 const MainStack = () => {
@@ -26,6 +27,7 @@ const MainStack = () => {
       <HomeStack.Screen name='Quiz' component={Quiz} options={{headerShown:true}} />
       <HomeStack.Screen name='Offer' component={Offer} options={{headerShown:true}} />
       <HomeStack.Screen name='Wallet' component={Wallet} options={{headerShown:true}} />
+      <HomeStack.Screen name='Contact' component={Contact} options={{headerShown:true}} />
       <HomeStack.Screen name='Login' component={Login} />
     </HomeStack.Navigator>
   )

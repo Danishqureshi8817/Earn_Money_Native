@@ -9,7 +9,10 @@ import { taskdata } from './taskdata';
 import LinearGradient from 'react-native-linear-gradient'
 import styles from './style'
 
+
 const Offer = () => {
+
+
 
     const navigation = useNavigation();
 
@@ -45,6 +48,9 @@ const Offer = () => {
       }, []);
 
   return (
+
+    
+
     <View style={{flex:1,backgroundColor:'#0a203e'}}>
     <View style={styles.mainContiner}>
 
@@ -91,6 +97,7 @@ const Offer = () => {
       }} />
          </View>
     </View>
+ 
   )
 }
 

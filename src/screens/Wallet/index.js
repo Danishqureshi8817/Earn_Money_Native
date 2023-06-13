@@ -8,7 +8,10 @@ import LinearGradient from 'react-native-linear-gradient'
 import { responsiveHeight, responsiveWidth, responsiveFontSize } from "react-native-responsive-dimensions";
 import styles from './style'
 
+
 const Wallet = () => {
+
+
   const [coin, setCoin] = useState(5660)
   const [selectedCard, setSelectedCard] = useState()
   const [selected, setSelected] = useState(false)
@@ -68,6 +71,10 @@ const Wallet = () => {
   }
 
   return (
+
+   
+ 
+
     <View style={{ flex: 1, backgroundColor: "#0a203e" }} >
 
 
@@ -459,6 +466,8 @@ const Wallet = () => {
 
 
     </View>
+
+ 
   )
 }
 
