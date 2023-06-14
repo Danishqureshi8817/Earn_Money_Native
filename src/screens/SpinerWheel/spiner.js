@@ -84,14 +84,14 @@ class Spiner extends Component {
             {this.winPrice()}
               You win {participants[this.state.winnerIndex]}
             </Text>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={() => {
                 this.setState({winnerIndex: null});
                 this.child._tryAgain();
               }}
               style={styles.tryAgainButton}>
               <Text style={styles.tryAgainText}>TRY AGAIN</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         )}
    {/* <View style={{marginTop:280}}>

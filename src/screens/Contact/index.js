@@ -165,7 +165,7 @@ const Contact = () => {
         //   console.warn(currentValue)
      
         }}
-        // onChangeText={handleChange('subject')}
+        onChangeText={handleChange('subject')}
        
       
       />
