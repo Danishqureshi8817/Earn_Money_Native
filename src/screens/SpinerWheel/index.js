@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity,SafeAreaView } from 'react-native'
 import React,{useLayoutEffect,useState} from 'react'
 import Spiner from './spiner'
 import { useNavigation } from "@react-navigation/native";
@@ -42,8 +42,10 @@ const SpinerWheel = () => {
     });
   }, []);
 
+
+
   return (
-  
+
  
     <View style={{flex:1,backgroundColor:'#0a203e'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:responsiveWidth(9.8)}}>
@@ -51,9 +53,10 @@ const SpinerWheel = () => {
           <Text style={{color:'#fff',fontSize:responsiveFontSize(1.7),letterSpacing:responsiveWidth(0.37)}}>Spin Daily and get Exciting cash rewards</Text>
           <Text style={{color:'#fff',fontSize:responsiveFontSize(1.9),marginTop:responsiveWidth(2.5)}}>Win upto Rs.100 Daily</Text>
         </View>
-      <Spiner/>
+   <Spiner/>
+  
     </View>
-    
+   
   )
 }
 
