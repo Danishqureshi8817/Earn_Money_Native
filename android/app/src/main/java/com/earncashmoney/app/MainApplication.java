@@ -1,4 +1,4 @@
-package com.nativelearn;
+package com.earncashmoney.app;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

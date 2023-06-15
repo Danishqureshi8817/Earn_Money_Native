@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.nativelearn"
+    namespace "com.earncashmoney.app"
     defaultConfig {
-        applicationId "com.nativelearn"
+        applicationId "com.earncashmoney.app"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
