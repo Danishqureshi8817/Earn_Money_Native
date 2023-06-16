@@ -4,10 +4,47 @@ import { styles } from './style'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { responsiveHeight,responsiveWidth,responsiveFontSize} from "react-native-responsive-dimensions";
 import LinearGradient from 'react-native-linear-gradient';
+import CallApi, {setToken} from '../../utiles/network';
 
 
 
 const Login = () => {
+
+
+  function handleLogin() {
+    if (inputData.Email === '') {
+      setModal({isVisible: true, text: "Email can't be empty"});
+      return;
+    }
+    if (inputData.Password === '') {
+      setModal({isVisible: true, text: "Password can't be empty"});
+      return;
+    }
+
+    const body = {
+      uid: inputData.Email,
+      password: inputData.Password,
+    };
+
+    CallApi('users/login', 'POST', body).then(async r => {
+      if (r.message) {
+        setModal({isVisible: true, text: r.message});
+        setStatus('Input');
+        return;
+      } else {
+        setStatus('Loaded');
+        // Alert.alert(r.token);
+        setToken(r.token);
+        navigation.navigate('Home');
+        // const token = await getToken();
+        // console.log('token in login.js :', token);
+        // getToken().then(res => console.log(res));
+      }
+    });
+    setStatus('Loading');
+  }
+
+
   return (
 
     <LinearGradient colors={['#1f4c86', '#0a203e']} 

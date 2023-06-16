@@ -1,4 +1,4 @@
-import { View, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity,Modal,TouchableHighlight } from 'react-native'
+import { View,Alert, Text, Button, Pressable, SafeAreaView, ScrollView, Image,TouchableOpacity,Modal,TouchableHighlight } from 'react-native'
 import React from 'react'
 import { useLayoutEffect,useState,useEffect,useRef } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -12,7 +12,8 @@ import styles from './style'
 import IconEntypo from 'react-native-vector-icons/Entypo';
 import LinearGradient from 'react-native-linear-gradient'
 import YoutubePlayer from "react-native-youtube-iframe";
-
+ import crashlytics from '@react-native-firebase/crashlytics';
+ import CallApi, {setToken} from '../../utiles/network';
 
 const Home = () => {
 
@@ -22,9 +23,34 @@ const Home = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [modalVisibleVideo, setModalVisibleVideo] = useState(false);
   const [videoClose, setVideoClose] = useState(false)
+  const [inputData, setInputData] = useState({Email: '', Password: ''});
 
   const navigation = useNavigation();
  
+
+  function handleLogin() {
+    if (inputData.Email === '') {
+      Alert('Email');
+     // setModal({isVisible: true, text: "Email can't be empty"});
+      return;
+    }
+    if (inputData.Password === '') {
+      Alert('Email');
+
+     // setModal({isVisible: true, text: "Password can't be empty"});
+      return;
+    }
+
+    const body = {
+      uid: inputData.Email,
+      password: inputData.Password,
+    };
+
+    CallApi('users/login', 'POST', body).then(async r => {
+      console.log( 'apires',r)
+
+    });
+   }
 
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
@@ -34,7 +60,24 @@ const Home = () => {
 const [counter, setCounter] = useState(0)
 
 useEffect(() => {
-  const timer = counter>0 && setInterval(() => {
+ // handleLogin();
+ 
+ const body = {
+  uid: inputData.Email,
+  password: inputData.Password,
+};
+
+CallApi('userlist', 'POST', body).then(async r => {
+  console.log( 'apiresponse',r)
+
+});
+  console.log( 'homepage')
+  crashlytics().log('User home in.');
+  crashlytics().crash();
+  console.log( 'homepage crash ')
+
+
+   const timer = counter>0 && setInterval(() => {
     setCounter(counter-1)
   }, 1000);
 
