@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+<!-- <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
     <!-- image picker permission -->
 <uses-permission android:name="android.permission.CAMERA"/>
 <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
@@ -9,7 +9,9 @@
 <uses-feature android:name="android.hardware.camera.front" android:required="false" />
 
     <!-- image picker permission -->
-
+     <!-- android 13 notifucation permission -->
+<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
       android:name=".MainApplication"
